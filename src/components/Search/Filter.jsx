@@ -33,6 +33,7 @@ const Filter = () => {
 const Select = styled.div`
   background: ${({ theme }) => theme.elem};
   display: none;
+  box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.75);
   ${tw`w-full rounded-md absolute top-full left-0 mt-xs py-xs`}
   ${({ isOpen }) => isOpen && tw`block`}
 `;
