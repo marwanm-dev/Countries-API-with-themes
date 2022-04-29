@@ -55,9 +55,8 @@ const LoadMoreButton = styled.button`
 `;
 
 const Wrapper = styled.div`
-  display: grid;
+  ${tw`grid mob:px-pg row-gap-md col-gap-xl`}
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  ${tw`mob:px-pg row-gap-md col-gap-xl`}
 `;
 
 export default Countries;

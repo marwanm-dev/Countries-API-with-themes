@@ -52,7 +52,7 @@ export const DataProvider = ({ children }) => {
             currencies: obj.currencies
               ? obj.currencies[Object.keys(obj.currencies)[0]].name
               : 'Not determined',
-            borderCountries: obj.borders || 'no border countries',
+            borderCountries: obj.borders || 'Not determined',
             languages:
               (obj.languages && [Object.values(obj.languages)].join(',')) || 'Not determined',
           },
