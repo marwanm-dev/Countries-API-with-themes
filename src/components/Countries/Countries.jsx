@@ -48,6 +48,10 @@ const LoadMoreButton = styled.button`
   box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.75);
   margin: 0 auto;
   ${tw`p-xs w-[125px] rounded mt-lg mb-lg`};
+  &:hover {
+    background: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.elem};
+  }
 `;
 
 const Wrapper = styled.div`

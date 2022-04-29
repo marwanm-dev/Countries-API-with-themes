@@ -24,11 +24,10 @@ const Details = () => {
           <DetailedInfo>
             <FirstSection>
               <Item>
-                Native name:
-                <NativeName>{detailedData.nativeName}</NativeName>
+                Native name: <NativeName>{detailedData.nativeName}</NativeName>
               </Item>
               <Item>
-                Population:
+                Population:{' '}
                 <Population>{numeral(detailedData.population).format('0,0')}</Population>
               </Item>
               <Item>
@@ -73,6 +72,10 @@ const BackButton = styled(Link)`
   background: ${({ theme }) => theme.elem};
   box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.75);
   ${tw`p-xs w-[125px] rounded inline-flex items-center justify-center gap-xs my-lg`}
+  &:hover {
+    background: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.elem};
+  }
 `;
 
 const MainContent = styled.div`
@@ -119,7 +122,7 @@ const BorderCountries = tw.div`mt-lg mob:mt-md max-w-[500px]`;
 const BorderCountry = styled.div`
   background: ${({ theme }) => theme.elem};
   box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.75);
-  ${tw`rounded text-center inline-block w-28 py-2xs px-xs ml-3 my-1`}
+  ${tw`rounded text-center inline-block w-28 py-2xs px-xs mr-3 my-1`}
 `;
 
 const Wrapper = styled(motion.div)`

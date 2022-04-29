@@ -2,11 +2,13 @@ import { createContext, useState } from 'react';
 import axios from '../api/countries'; // Axios Instance
 import useAxios from '../hooks/use-axios';
 import useNonInitialEffect from '../hooks/use-non-initial-effect';
+import removeDuplicate from '../helpers/removeDuplicate';
 
 const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [regions, setRegions] = useState([]);
   const [originalData, setOriginalData] = useState([]);
   const [modifiedData, setModifiedData] = useState([]);
   const [maxFetch, setMaxFetch] = useState(8);
@@ -22,6 +24,7 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   useNonInitialEffect(() => {
+    setRegions(removeDuplicate(response?.data.map(countryData => countryData.region)));
     setOriginalData(response?.data);
   }, [response]);
 
@@ -67,6 +70,7 @@ export const DataProvider = ({ children }) => {
         error,
         isLoading,
         detailedData,
+        regions,
         setOriginalData,
         setModifiedData,
         setDetailedData,

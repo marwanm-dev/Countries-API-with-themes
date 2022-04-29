@@ -2,22 +2,24 @@ import tw, { styled } from 'twin.macro';
 import { useState, useEffect, useContext } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import SearchContext from '../../context/SearchContext';
+import DataContext from '../../context/DataContext';
 import { nanoid } from 'nanoid';
 
 const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
   const { filteredRegion, setFilteredRegion } = useContext(SearchContext);
+  const { regions } = useContext(DataContext);
 
   useEffect(() => setIsOpen(false), [filteredRegion]);
 
   return (
     <Wrapper>
-      <Heading>{filteredRegion ? filteredRegion : 'Filter by Region'}</Heading>
+      <Heading>{filteredRegion || 'Filter by Region'}</Heading>
       <Icon onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <HiChevronDown />
       </Icon>
       <Select isOpen={isOpen}>
+        <Option onClick={() => setFilteredRegion('')}>All</Option>
         {regions.map(region => (
           <Option key={nanoid()} onClick={() => setFilteredRegion(region)}>
             {region}
@@ -31,12 +33,16 @@ const Filter = () => {
 const Select = styled.div`
   background: ${({ theme }) => theme.elem};
   display: none;
-  ${tw`w-full rounded-md py-xs absolute top-full left-0 mt-xs`}
+  ${tw`w-full rounded-md absolute top-full left-0 mt-xs py-xs`}
   ${({ isOpen }) => isOpen && tw`block`}
 `;
 
 const Option = styled.h3`
   ${tw`px-md py-xs cursor-pointer`}
+  &:hover {
+    background: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.elem};
+  }
 `;
 
 const Heading = styled.h3`
@@ -51,6 +57,6 @@ const Icon = styled.div`
 
 const Wrapper = styled.div`
   background: ${({ theme }) => theme.elem};
-  ${tw`relative  w-[210px] rounded-md px-md py-sm flex items-center justify-between`}
+  ${tw`relative  w-[210px] z-10 rounded-md px-md py-sm flex items-center justify-between`}
 `;
 export default Filter;

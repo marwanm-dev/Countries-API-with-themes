@@ -9,22 +9,25 @@ export const SearchProvider = ({ children }) => {
   const [filteredRegion, setFilteredRegion] = useState('');
 
   useNonInitialEffect(() => {
-    setOriginalData(
-      response.data.filter(countryData => {
-        if (searchedName && filteredRegion) {
-          return (
-            countryData.name.official.includes(searchedName) &&
-            countryData.region === filteredRegion
-          );
-        } else if (searchedName && !filteredRegion) {
-          return countryData.name.official.includes(searchedName);
-        } else if (!searchedName && filteredRegion) {
-          return countryData.region === filteredRegion;
-        } else {
-          return countryData;
-        }
-      })
-    );
+    if (filteredRegion && searchedName)
+      setOriginalData(
+        response.data.filter(
+          countryData =>
+            countryData.region === filteredRegion &&
+            countryData.name.official.includes(searchedName)
+        )
+      );
+    if (filteredRegion && !searchedName)
+      setOriginalData(response.data.filter(countryData => countryData.region === filteredRegion));
+    if (!filteredRegion && searchedName)
+      setOriginalData(
+        response.data.filter(countryData => countryData.name.official.includes(searchedName))
+      );
+    if (filteredRegion && searchedName)
+      setOriginalData(
+        response.data.filter(countryData => countryData.name.official.includes(searchedName))
+      );
+    if (!filteredRegion && !searchedName) setOriginalData(response.data);
   }, [filteredRegion, searchedName]);
 
   useNonInitialEffect(() => console.log(originalData), [originalData]);
