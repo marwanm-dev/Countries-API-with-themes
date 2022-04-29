@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import numeral from 'numeral';
 import DataContext from '../../context/DataContext';
+import country from '../../animations/country';
 
 const Country = ({ modifiedData }) => {
   const { setDetailedData } = useContext(DataContext);
@@ -14,12 +15,14 @@ const Country = ({ modifiedData }) => {
   return (
     <Wrapper
       onClick={handleClick}
+      variants={country}
+      initial='initial'
+      animate='shown'
       whileHover={{
-        scale: 1.035,
+        scale: 1.025,
         boxShadow: `${useTheme().shadow} 0px 48px 150px -125px`,
       }}
-      transition={{ duration: 0.15, type: 'linear' }}
-      whileTap={{ scale: 0.9 }}>
+      whileTap={{ scale: 0.925 }}>
       <Link to='details'>
         <Image src={modifiedData.flag} />
         <Content>
@@ -42,8 +45,8 @@ const Country = ({ modifiedData }) => {
 };
 
 const Image = styled.img`
-  width: 100%;
   height: 200px;
+  width: 350px;
 `;
 
 const Content = styled.div`
@@ -73,7 +76,9 @@ const Capital = styled.h3``;
 const Wrapper = styled(motion.div)`
   background: ${({ theme }) => theme.elem};
   color: ${({ theme }) => theme.text};
-  ${tw`rounded-md overflow-hidden`}
+  max-width: 350px;
+
+  ${tw`rounded-md mx-auto overflow-hidden`}
 `;
 
 export default Country;

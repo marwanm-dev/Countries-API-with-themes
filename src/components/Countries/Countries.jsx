@@ -56,7 +56,7 @@ const LoadMoreButton = styled.button`
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   ${tw`mob:px-pg row-gap-md col-gap-xl`}
 `;
 
