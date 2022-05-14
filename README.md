@@ -11,7 +11,7 @@
 
 # Live
 
-- https://marodevv-countries-api-with-themes.pages.dev/
+- https://marodevv-countries-api-with-themes.vercel.app/
 
 # Credit
 
