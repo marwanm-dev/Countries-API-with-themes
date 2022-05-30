@@ -1,18 +1,19 @@
 # Countries-api-with-themes
 
-- Fully responsive & animated
+## Tech used with *vite*🔥:
 
-- Tech used with *vite*🔥:
-  React
-  React router
-  Tailwind & Styled Components
-  Framer motion
-  Axios
+> Frontend
 
-# Live
+-   React
+-   React router
+-   Tailwind & Styled Components
+-   Framer motion
+-   Axios
 
-- https://marodevv-countries-api-with-themes.vercel.app/
+## Live
 
-# Credit
+> https://marodevv-countries-api-with-themes.vercel.app
 
-- Inspired by Frontend Mentor
+## Credit
+
+> Inspired by Frontend Mentor
