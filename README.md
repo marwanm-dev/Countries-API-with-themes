@@ -6,7 +6,8 @@
 
 -   React
 -   React router
--   Tailwind & Styled Components
+-   Tailwind
+-   Styled components
 -   Framer motion
 -   Axios
 
