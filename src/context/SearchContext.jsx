@@ -7,24 +7,20 @@ const SearchContext = createContext({});
 
 export const SearchProvider = ({ children }) => {
   const { response, setOriginalData } = useContext(DataContext);
-  // const [searchedName, setSearchedName] = useState('');
   const [search, resetSearch, searchAttrs] = useInput('');
   const [filteredRegion, setFilteredRegion] = useState('');
 
-  //! loops between setting searchedName & filteredRegion resulting in not activating either one of them
   useNonInitialEffect(() => {
-    // setSearchedName('');
-    setOriginalData(response.data.filter(countryData => countryData.region === filteredRegion));
-  }, [filteredRegion]);
-
-  useNonInitialEffect(() => {
-    // setFilteredRegion('');
     setOriginalData(
-      response.data.filter(countryData => countryData.name.official.includes(search))
+      response.data.filter(countryData =>
+        filteredRegion === ''
+          ? countryData.name.official.includes(search)
+          : countryData.name.official.includes(search) && countryData.region === filteredRegion
+      )
     );
-  }, [search]);
+  }, [search, filteredRegion]);
 
-  //* Do not change this useEffect's order!
+  //* Do not change this useEffect order!
   useNonInitialEffect(() => {
     if (!filteredRegion && !search) setOriginalData(response.data);
   }, [filteredRegion, search]);
