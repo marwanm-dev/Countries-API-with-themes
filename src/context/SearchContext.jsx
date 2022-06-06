@@ -14,7 +14,7 @@ export const SearchProvider = ({ children }) => {
     setOriginalData(
       response.data.filter(countryData =>
         filteredRegion === ''
-          ? countryData.name.official.includes(search)
+          ? countryData.name.official.toLowerCase().includes(search.toLowerCase())
           : countryData.name.official.includes(search) && countryData.region === filteredRegion
       )
     );
