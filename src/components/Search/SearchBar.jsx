@@ -1,21 +1,21 @@
 import tw, { styled, theme } from 'twin.macro';
 import { useContext } from 'react';
+import { RiDeleteBack2Line } from 'react-icons/ri';
 import { ImSearch } from 'react-icons/im';
 import SearchContext from '../../context/SearchContext';
 
 const SearchBar = () => {
-  const { searchedName, setSearchedName } = useContext(SearchContext);
+  const { resetSearch, searchAttrs } = useContext(SearchContext);
 
   return (
     <Wrapper>
       <Icon>
         <ImSearch />
       </Icon>
-      <Input
-        placeholder='Search for a country...'
-        value={searchedName}
-        onChange={e => setSearchedName(e.target.value)}
-      />
+      <Input placeholder='Search for a country...' {...searchAttrs} />
+      <Icon onClick={resetSearch}>
+        <RiDeleteBack2Line />
+      </Icon>
     </Wrapper>
   );
 };
