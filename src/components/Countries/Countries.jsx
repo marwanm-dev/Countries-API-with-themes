@@ -24,6 +24,7 @@ const Countries = () => {
                   <Country key={nanoid()} modifiedData={countryData} />
                 ))}
               </Wrapper>
+              <CountriesCount>Current viewed countries is {modifiedData.length}</CountriesCount>
               <LoadMoreButton onClick={loadMore}>Load more</LoadMoreButton>
             </>
           )
@@ -33,6 +34,11 @@ const Countries = () => {
     </>
   );
 };
+
+const CountriesCount = styled.div`
+  color: ${({ theme }) => theme.text};
+  ${tw`p-xs mt-md text-center font-semibold rounded`};
+`;
 
 const Paragraph = styled.div`
   color: ${({ theme }) => theme.text};
