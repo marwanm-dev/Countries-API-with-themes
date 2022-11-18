@@ -13,7 +13,7 @@
 
 ## Live
 
-> https://marwanmodev-countries-api-with-themes.vercel.app
+> https://marwanm-countries-api-with-themes.vercel.app
 
 ## Credit
 
